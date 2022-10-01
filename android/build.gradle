@@ -25,7 +25,7 @@ def safeExtGet(prop, fallback) {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'de.undercouch.download'
 
 android {
@@ -440,6 +440,14 @@ task packageNdkLibs(dependsOn: buildReanimated, type: Copy) {
 afterEvaluate {
     clean.dependsOn(cleanNdkLibs)
     preBuild.dependsOn(packageNdkLibs)
+
+    publishing {
+        repositories {
+            maven {
+                url = uri("${rootProject.projectDir}/maven-repo")
+            }
+        } 
+    }
 }
 
 repositories {
