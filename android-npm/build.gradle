@@ -6,4 +6,4 @@ def json = new JsonSlurper().parseText(inputFile.text)
 def reactNativeVersion = json.version as String
 def (major, minor, patch) = reactNativeVersion.tokenize('.')
 
-artifacts.add("default", file("react-native-reanimated-64.aar"))
+artifacts.add("default", file("react-native-reanimated.aar"))
